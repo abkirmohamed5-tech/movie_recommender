@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>We Found This For You!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        
+        <!-- مكان إعلان لفوق (Top Banner Ad Spot) -->
+        <div class="ad-spot top-ad">
+            <p class="ad-label">ADVERTISEMENT</p>
+            <div class="ad-placeholder">[ Banner Ad Slot ]</div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="badge">{{ media.type }}</span>
+                <span class="badge genre-badge">{{ media.genre }}</span>
+                <span class="rating">⭐ {{ media.rating }}</span>
+            </div>
+            <h2>{{ media.title }} ({{ media.year }})</h2>
+            <p class="duration">⏱️ {{ media.runtime }} | Vibe: {{ media.mood }}</p>
+            <p class="desc">{{ media.desc }}</p>
+        </div>
+
+        <!-- مكان إعلان في المنتصف (Native Ad Slot) -->
+        <div class="ad-spot middle-ad">
+            <p class="ad-label">SPONSORED</p>
+            <div class="ad-placeholder">[ Native / Recommendation Ad Unit ]</div>
+        </div>
+
+        <div class="actions">
+            <form action="/recommend" method="POST">
+                <input type="hidden" name="type" value="Any">
+                <input type="hidden" name="genre" value="Any">
+                <input type="hidden" name="mood" value="Any">
+                <button type="submit" class="btn secondary">🔄 Spin Another Random Title</button>
+            </form>
+            <a href="/" class="btn primary">🔍 Change Filters</a>
+        </div>
+
+    </div>
+</body>
+</html>
